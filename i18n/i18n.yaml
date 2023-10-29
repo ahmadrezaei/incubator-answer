@@ -17,6 +17,9 @@
 
 # all support language
 language_options:
+  - label: "فارسی"
+    value: "fa_IR"
+    progress: 90
   - label: "English"
     value: "en_US"
     progress: 100
