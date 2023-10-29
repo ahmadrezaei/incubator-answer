@@ -16,7 +16,7 @@
 # under the License.
 
 FROM golang:1.19-alpine AS golang-builder
-LABEL maintainer="aichy@sf.com"
+LABEL maintainer="parsarezaei53@gmail.com"
 
 ARG GOPROXY
 # ENV GOPROXY ${GOPROXY:-direct}
@@ -24,7 +24,7 @@ ENV GOPROXY=https://proxy.golang.com.cn,direct
 
 ENV GOPATH /go
 ENV GOROOT /usr/local/go
-ENV PACKAGE github.com/answerdev/answer
+ENV PACKAGE github.com/ahmadrezaei/incubator-answer
 ENV BUILD_DIR ${GOPATH}/src/${PACKAGE}
 ENV ANSWER_MODULE ${BUILD_DIR}
 
@@ -45,7 +45,7 @@ RUN mkdir -p /data/uploads && chmod 777 /data/uploads \
     && mkdir -p /data/i18n && cp -r i18n/*.yaml /data/i18n
 
 FROM alpine
-LABEL maintainer="maintainers@sf.com"
+LABEL maintainer="parsarezaei53@gmail.com"
 
 ENV TZ "Asia/Shanghai"
 RUN apk update \
@@ -58,7 +58,7 @@ RUN apk update \
         openssh \
         sqlite \
         gnupg \
-    && echo "Asia/Shanghai" > /etc/timezone
+    && echo "Asia/Tehran" > /etc/timezone
 
 COPY --from=golang-builder /usr/bin/answer /usr/bin/answer
 COPY --from=golang-builder /data /data
